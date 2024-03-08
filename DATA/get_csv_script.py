@@ -1,5 +1,6 @@
 import pandas as pd
 import yfinance as yf
+from sklearn.model_selection import train_test_split
 
 company = ["MSFT", "AAPL", "NVDA", "AMZN", "GOOG", \
            "GOOGL", "META", "TSM", "LLY", "AVGO", \
@@ -40,5 +41,32 @@ for ticker in company:
     # Save cleaned data to a new CSV file
     df.to_csv(f"cleaned_{ticker}_prices.csv", index=False)
 
-# cd DATA
-# python get_csv_script.py
+# Function to split data into train, cross-validation, and test sets
+def split_data(data):
+    train, temp = train_test_split(data, test_size=0.4, random_state=42)
+    cv, test = train_test_split(temp, test_size=0.5, random_state=42)
+    return train, cv, test
+
+# Loop through each ticker symbol
+for ticker in company:
+    # Load data from CSV file
+    df = pd.read_csv(f"{ticker}_prices.csv")
+    
+    # Remove rows with missing values for Open, High, Low, Close, and Volume columns
+    df.dropna(subset=['Open', 'High', 'Low', 'Close', 'Volume'], how='all', inplace=True)
+    
+    # Split data into train, cross-validation, and test sets
+    train_df, cv_df, test_df = split_data(df)
+    
+    # Save split data to new CSV files
+    train_df.to_csv(f"{ticker}_train.csv", index=False)
+    cv_df.to_csv(f"{ticker}_cv.csv", index=False)
+    test_df.to_csv(f"{ticker}_test.csv", index=False)
+
+'''
+Side notes:
+cd DATA
+python get_csv_script.py
+which (module)
+'''
+
