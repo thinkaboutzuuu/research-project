@@ -7,7 +7,7 @@ company = ["MSFT", "AAPL", "NVDA", "AMZN", "GOOG", \
             "NVO", "TSLA", "JPM", "V", "WMT", \
                 "UNH", "MA", "XOM", "ASML", "JNJ"]
 data = yf.download(company)
-
+filter
 for ticker in company:
     # Extracting Open, High, Low, and Close prices for the ticker
     open_prices = data['Open'][ticker]
@@ -69,4 +69,3 @@ cd DATA
 python get_csv_script.py
 which (module)
 '''
-
