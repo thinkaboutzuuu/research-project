@@ -62,7 +62,7 @@ for ticker in company:
     train_df.to_csv(f"{ticker}_train.csv", index=False)
     cv_df.to_csv(f"{ticker}_cv.csv", index=False)
     test_df.to_csv(f"{ticker}_test.csv", index=False)
-
+    
 '''
 Side notes:
 cd DATA
