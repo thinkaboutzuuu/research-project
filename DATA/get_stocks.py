@@ -63,3 +63,9 @@ for ticker in company:
     cv_df.to_csv(f"{ticker}_cv.csv", index=False)
     test_df.to_csv(f"{ticker}_test.csv", index=False)
 
+'''
+Side notes:
+cd DATA
+python get_csv_script.py
+which (module)
+'''
