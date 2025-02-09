@@ -2,10 +2,7 @@ import pandas as pd
 import yfinance as yf
 from sklearn.model_selection import train_test_split
 
-company = ["MSFT", "AAPL", "NVDA", "AMZN", "GOOG", \
-           "GOOGL", "META", "TSM", "LLY", "AVGO", \
-            "NVO", "TSLA", "JPM", "V", "WMT", \
-                "UNH", "MA", "XOM", "ASML", "JNJ"]
+company = ["AMD", "AAPL"]
 data = yf.download(company)
 filter
 for ticker in company:
